@@ -2,7 +2,9 @@ package com.lvhq.platform.modules.sys.user.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -14,7 +16,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lvhq.platform.common.config.Global;
-import com.lvhq.platform.common.persistence.DataEntity;
 
 /**
  * 用户Entity
@@ -25,11 +26,17 @@ import com.lvhq.platform.common.persistence.DataEntity;
 @Entity
 @Table(name = "sys_user")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "com.lvhq.platform.modules.sys.user.entity.User")
-public class User extends DataEntity<User> {
-	private static final long serialVersionUID = 1L;
+public class User {
 
 	public static String DEFAULT_PASSWORD = "123456";
 
+	/**
+	 * 实体编号（唯一标识）
+	 */
+	@Id
+	@Column(name="id")
+	protected Long id;
+	
 	/**
 	 * 登录名
 	 */
@@ -108,11 +115,11 @@ public class User extends DataEntity<User> {
 	}
 
 	public User(Long id) {
-		super(id);
+		super();
 	}
 
 	public User(Long id, String loginName) {
-		super(id);
+		super();
 		this.loginName = loginName;
 	}
 
@@ -155,14 +162,6 @@ public class User extends DataEntity<User> {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getRemarks() {
-		return remarks;
-	}
-
-	public Date getCreateDate() {
-		return createDate;
 	}
 
 	public String getLoginIp() {
@@ -267,11 +266,6 @@ public class User extends DataEntity<User> {
 		this.plainPassword = plainPassword;
 	}
 
-	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
-	public Date getCreateDateStr() {
-		return createDate;
-	}
-
 	public String getUserType_() {
 		return userType_;
 	}
@@ -294,6 +288,10 @@ public class User extends DataEntity<User> {
 
 	public void setCanEdit(boolean canEdit) {
 		this.canEdit = canEdit;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }

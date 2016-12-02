@@ -18,7 +18,7 @@ import com.lvhq.platform.modules.sys.user.entity.User;
 @RequestMapping(value = "/sys/user")
 public class UserController {
 
-	private final String LIST = "module/sys/user/list";
+	private final String LIST = "modules/sys/user/list";
 
 	@RequestMapping(value = "/pre/list", method = { RequestMethod.GET })
 	@ResponseBody

@@ -2,12 +2,10 @@ package com.lvhq.platform.modules.sys.user.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.lvhq.platform.modules.sys.user.dao.UserDao;
+import com.google.common.collect.Lists;
 import com.lvhq.platform.modules.sys.user.entity.User;
 import com.lvhq.platform.modules.sys.user.service.UserService;
 
@@ -15,12 +13,15 @@ import com.lvhq.platform.modules.sys.user.service.UserService;
 @Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
 
-	@Resource
-	private UserDao userDao;
+	// @Resource
+	// private UserDao userDao;
 
 	@Override
 	public List<User> findAll() {
-		return userDao.findAll();
+		// return userDao.findAll();
+
+		List<User> userList = Lists.newArrayList();
+		return userList;
 	}
 
 }

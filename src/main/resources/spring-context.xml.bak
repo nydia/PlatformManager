@@ -43,33 +43,25 @@
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
 		depends-on="dataSource">
 		<property name="dataSource" ref="dataSource" />
+		<!-- Persistence unit manager -->
+   		<property name="persistenceUnitManager" ref="persistenceUnitManager" />
 		<property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter" />
 		<property name="packagesToScan" value="com.lvhq.platform" />
 		<property name="jpaProperties">
 			<props>
-				<prop key="hibernate.current_session_context_class">thread</prop>
-				<!-- 抓取策略 -->
-				<prop key="hibernate.max_fetch_depth">1</prop>
-				<prop key="hibernate.default_batch_fetch_size">4</prop>
-				<prop key="hibernate.jdbc.fetch_size">30</prop>
-				<prop key="hibernate.jdbc.batch_size">50</prop>
-				<!-- 缓存 -->
-				<prop key="hibernate.cache.use_second_level_cache">true</prop>
-				<prop key="hibernate.cache.use_query_cache">true</prop>
-				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory
-				</prop>
-				<prop key="net.sf.ehcache.configurationResourceName">cache/ehcache-hibernate-local.xml</prop>
-				<!-- 建表的命名规则 -->
-				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
-				<prop key="hibernate.generate_statistics">true</prop>
-				<prop key="hibernate.use_sql_comments">true</prop>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.format_sql">true</prop>
-				<!-- end 用于调试的属性 -->
-			</props>
+	          <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+	          <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+	        </props>
 		</property>
 	</bean>
+	
+	<!-- Persistence unit declaration -->
+	<bean id="persistenceUnitManager" class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
+	    <property name="defaultDataSource" ref="dataSource" />
+	    <property name="loadTimeWeaver">
+	        <bean class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" />
+	    </property>
+	</bean> 
 
 	<bean id="hibernateJpaVendorAdapter"
 		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
@@ -88,16 +80,9 @@
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		destroy-method="close">
 		<!-- Connection Info -->
-		<property name="driverClassName" value="${mysql.jdbc.driver}" />
-		<property name="url" value="${mysql.jdbc.url}" />
-		<property name="username" value="${mysql.jdbc.username}" />
-		<property name="password" value="${mysql.jdbc.password}" />
-		<!-- Connection Pooling Info -->
-		<property name="maxActive" value="${dbcp.maxActive}" />
-		<!-- <property name="maxIdle" value="${dbcp.maxIdle}" /> -->
-		<property name="defaultAutoCommit" value="false" />
-		<!-- 连接Idle一个小时后超时 -->
-		<property name="timeBetweenEvictionRunsMillis" value="3600000" />
-		<property name="minEvictableIdleTimeMillis" value="3600000" />
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://192.168.0.97:3306/platform_manager"/>
+		<property name="username" value="root" />
+		<property name="password" value="1QAZXSW2#" />
 	</bean>
 </beans>

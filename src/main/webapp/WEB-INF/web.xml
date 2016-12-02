@@ -9,6 +9,7 @@
 	<!-- Context ConfigLocation -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
+		<!-- <param-value>classpath*:/spring-context*.xml</param-value> -->
 		<param-value>classpath*:/spring-context*.xml</param-value>
 	</context-param>
 	<listener>
@@ -35,6 +36,7 @@
 	</filter-mapping>
 	
 	<!-- Apache Shiro -->
+	<!-- 
 	<filter>
 		<filter-name>shiroFilter</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -47,6 +49,7 @@
 		<filter-name>shiroFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	 -->
 
 	<!-- MVC Servlet -->
 	<servlet>
@@ -64,6 +67,7 @@
 	</servlet-mapping>
 
 	<!-- druid -->
+	<!-- 
 	<filter>
 		<filter-name>DruidWebStatFilter</filter-name>
 		<filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
@@ -84,6 +88,7 @@
 		<servlet-name>DruidStatView</servlet-name>
 		<url-pattern>/druid/*</url-pattern>
 	</servlet-mapping>
+	 -->
 	
 	<!-- Validate code -->
 	<servlet>

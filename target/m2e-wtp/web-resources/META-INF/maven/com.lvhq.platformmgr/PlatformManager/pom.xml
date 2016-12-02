@@ -10,6 +10,11 @@
   
   <properties>
   	<springVersion>4.3.3.RELEASE</springVersion>
+  	<springDataJpa>1.10.5.RELEASE</springDataJpa>
+  	<springDataCommons>1.12.5.RELEASE</springDataCommons>
+  	<hibernateVersion>5.2.4.Final</hibernateVersion>
+  	<shiroVersion>1.3.2</shiroVersion>
+  	<mybatisVersion>3.2.8</mybatisVersion>
   </properties>
   
   <dependencies>
@@ -106,6 +111,19 @@
 			<artifactId>druid</artifactId>
 			<version>1.0.26</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>commons-dbcp</groupId>
+		    <artifactId>commons-dbcp</artifactId>
+		    <version>1.4</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.3.2</version>
+		</dependency>
 
 		<!-- oracle-11.1.0.7.0 -->
 		<!-- common end -->
@@ -139,11 +157,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-tx</artifactId>
-			<version>${springVersion}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 			<version>${springVersion}</version>
 		</dependency>
@@ -163,18 +176,43 @@
 			<version>${springVersion}</version>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${springVersion}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
-			<version>1.10.5.RELEASE</version>
+			<version>${springDataJpa}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.data</groupId>
+		    <artifactId>spring-data-commons</artifactId>
+		    <version>${springDataCommons}</version>
 		</dependency>
 
 		<!-- spring end -->
 
-		<!-- hibernate 4.3.0 start -->
+		<!-- hibernate start -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>4.3.0.Final</version>
+			<version>${hibernateVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>${hibernateVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernateVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernateVersion}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
@@ -182,41 +220,47 @@
 			<version>1.0.1.Final</version>
 		</dependency>
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-ehcache</artifactId>
-			<version>4.3.0.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>5.2.4.Final</version>
-		</dependency>
-		<dependency>
 			<groupId>org.hibernate.common</groupId>
 			<artifactId>hibernate-commons-annotations</artifactId>
 			<version>4.0.4.Final</version>
 		</dependency>
-		<!-- hibernate 4.3.0 end -->
+		<!-- hibernate end -->
 
-		<!-- mybatis 3.2.8 start -->
+		<!-- mybatis start -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
-			<version>3.2.8</version>
+			<version>${mybatisVersion}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>1.3.0</version>
 		</dependency>
-		<!-- mybatis 3.2.8 end -->
+		<!-- mybatis end -->
 
-		<!-- shiro 1.3.2 -->
+		<!-- shiro start-->
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-core</artifactId>
-			<version>1.3.2</version>
+			<version>${shiroVersion}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
+			<version>${shiroVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>${shiroVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-ehcache</artifactId>
+			<version>${shiroVersion}</version>
+		</dependency>
+		<!-- shiro end-->
 	</dependencies>
   <build>
     <finalName>PlatformManager</finalName>
