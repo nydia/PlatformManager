@@ -6,6 +6,12 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
+	<description>Spring MVC Configuration</description>
+    
+    <!-- 加载配置属性文件 -->
+    <!-- 此配置可以让controller里面采用${admin}方式从配置文件里面取值 -->
+	<context:property-placeholder ignore-unresolvable="true" location="classpath*:/apps.properties" />
+	
 	<!-- 自动扫描且只扫描@Controller -->
 	<!-- 加入定制化包实体路径com.sample -->
 	<context:component-scan base-package="com.lvhq.platform"

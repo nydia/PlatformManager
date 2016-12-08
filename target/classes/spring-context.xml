@@ -16,11 +16,13 @@
 
 	<description>Spring公共配置 </description>
 
+	<!-- 加载配置属性文件 -->
 	<context:property-placeholder
-		ignore-unresolvable="true" local-override="true"
-		location="classpath*:/apps.properties" />
+		ignore-unresolvable="true" location="classpath*:/apps.properties" />
 
-	<util:properties id="APP_PROPERTIES" location="classpath:apps.properties"
+	<!-- 加载应用属性实例，可通过 @Value("#{APP_PROP['jdbc.driver']}") String jdbcDriver 
+		方式引用 -->
+	<util:properties id="APP_PROP" location="classpath*:/apps.properties"
 		local-override="true" />
 
 	<!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 -->
