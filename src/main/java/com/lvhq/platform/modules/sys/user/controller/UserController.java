@@ -11,13 +11,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.common.collect.Lists;
-import com.lvhq.platform.common.config.Global;
 import com.lvhq.platform.common.utils.AjaxObject;
 import com.lvhq.platform.common.web.BaseController;
 import com.lvhq.platform.modules.sys.user.entity.User;
 
 /**
- * 用户管理 注[访问路径：http://localhost:8080/PlatformManager/sys/user/pre/list]
+ * 用户管理 注[访问路径：http://localhost:8080/PlatformManager/admin/sys/user/pre/list]
  * 
  * @author lvhq
  * @date 2016年12月5日 下午4:36:02
@@ -30,8 +29,6 @@ public class UserController extends BaseController{
 
 	@RequestMapping(value = "/pre/list", method = { RequestMethod.GET })
 	public String preList(User user, HttpServletRequest request, HttpServletResponse response) {
-		String admin = adminPath;
-		System.out.println("adminPath---------------" + admin);
 		return LIST;
 	}
 
