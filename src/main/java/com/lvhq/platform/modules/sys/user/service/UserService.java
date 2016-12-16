@@ -7,4 +7,6 @@ import com.lvhq.platform.modules.sys.user.entity.User;
 public interface UserService {
 
 	List<User> findAll();
+
+	User getByLoginName(String loginName);
 }

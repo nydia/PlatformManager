@@ -24,4 +24,13 @@ public class UserServiceImpl implements UserService {
 		return userList;
 	}
 
+	@Override
+	public User getByLoginName(String loginName) {
+		User user = new User();
+		user.setId(1L);
+		user.setLoginName("admin");
+		user.setPassword("123456");
+		return null;
+	}
+
 }
