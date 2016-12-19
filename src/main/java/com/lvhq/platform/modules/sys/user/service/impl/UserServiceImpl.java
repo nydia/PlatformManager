@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
 		user.setId(1L);
 		user.setLoginName("admin");
 		user.setPassword("123456");
-		return null;
+		return user;
 	}
 
 }

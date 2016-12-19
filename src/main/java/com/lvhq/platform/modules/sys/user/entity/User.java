@@ -2,9 +2,7 @@ package com.lvhq.platform.modules.sys.user.entity;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -16,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lvhq.platform.common.config.Global;
+import com.lvhq.platform.common.persistence.DataEntity;
 
 /**
  * 用户Entity
@@ -26,17 +25,12 @@ import com.lvhq.platform.common.config.Global;
 @Entity
 @Table(name = "sys_user")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "com.lvhq.platform.modules.sys.user.entity.User")
-public class User {
+public class User extends DataEntity<User> {
+
+	private static final long serialVersionUID = 1L;
 
 	public static String DEFAULT_PASSWORD = "123456";
 
-	/**
-	 * 实体编号（唯一标识）
-	 */
-	@Id
-	@Column(name="id")
-	protected Long id;
-	
 	/**
 	 * 登录名
 	 */
@@ -89,7 +83,7 @@ public class User {
 	@Length(min = 1, max = 64, message = "盐值长度必须介于 0 和 1 之间")
 	private String userType;
 
-	private String userType_;// 数据插入
+	private UserInfo userInfo = new UserInfo();
 
 	// 临时变量
 	@JsonBackReference
@@ -102,12 +96,10 @@ public class User {
 	private String oldLoginIp;// 上次登陆IP
 	@JsonBackReference
 	private Date oldLoginDate;// 上次登陆日期
-	private UserInfo userInfo = new UserInfo();
 	@JsonBackReference
 	private boolean superAdmin; // 是否是超级管理员
 	@JsonBackReference
 	private String rePassword;// 二次输入密码
-	private boolean canEdit = true;// 是否可以编辑(不同级别的用户不可以相互修改,自己不可以修改自己的[角色/机构]等信息)
 
 	public User() {
 		super();
@@ -266,14 +258,6 @@ public class User {
 		this.plainPassword = plainPassword;
 	}
 
-	public String getUserType_() {
-		return userType_;
-	}
-
-	public void setUserType_(String userType_) {
-		this.userType_ = userType_;
-	}
-
 	public String getUserType() {
 		return userType;
 	}
@@ -281,17 +265,4 @@ public class User {
 	public void setUserType(String userType) {
 		this.userType = userType;
 	}
-
-	public boolean isCanEdit() {
-		return canEdit;
-	}
-
-	public void setCanEdit(boolean canEdit) {
-		this.canEdit = canEdit;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 }

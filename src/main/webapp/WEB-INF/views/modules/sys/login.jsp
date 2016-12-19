@@ -12,7 +12,14 @@
 <meta http-equiv="expires" content="<%=new Date()%>">
 </head>
 <body>
-	<form action="${ctx }/login">
+	<table>
+		<tr>
+			<td>登陆信息：</td>
+			<td>${msg}</td>
+		</tr>
+	</table>
+	<hr />
+	<form action="${ctx }/login" method="post">
 		<table>
 			<tr>
 				<td colspan="2">用户登陆：</td>
@@ -31,4 +38,10 @@
 			</tr>
 		</table>
 	</form>
+	<hr />
+	<table>
+		<tr>
+			<td colspan="2"><a href="${ctx }/logout">退出登陆</a></td>
+		</tr>
+	</table>
 </body>

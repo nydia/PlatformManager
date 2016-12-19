@@ -12,6 +12,7 @@ import com.lvhq.platform.modules.sys.user.entity.User;
 
 /**
  * 数据Entity类
+ * 
  * @author lvhq
  * 
  */
@@ -38,47 +39,8 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
 	@Length(min = 1, max = 1)
 	protected String delFlag; // 删除标记（0：正常；1：删除；2：审核）
 
-	@JsonIgnore
-	protected String brandCustomId;// 品牌客户id
-
 	protected Map<String, Object> inc = new HashMap<String, Object>();
-
-	public DataEntity() {
-		super();
-		this.delFlag = DEL_FLAG_NORMAL;
-	}
-
-	public DataEntity(Long id) {
-		super(id);
-	}
-
-	static long getSystemTime() {
-		long timemillis = System.currentTimeMillis();
-		try {
-			Thread.sleep(1);
-		} catch (InterruptedException e) {
-		}
-		return timemillis;
-	}
-
-	/**
-	 * 插入之前执行方法，需要手动调用
-	 */
-	@Override
-	public void preInsert() {
-		setId(getSystemTime());
-		this.updateDate = new Date();
-		this.createDate = this.updateDate;
-	}
-
-	/**
-	 * 更新之前执行方法，需要手动调用
-	 */
-	@Override
-	public void preUpdate() {
-		this.updateDate = new Date();
-	}
-
+	
 	public String getRemarks() {
 		return remarks;
 	}
@@ -134,4 +96,6 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
 	public void setInc(Map<String, Object> inc) {
 		this.inc = inc;
 	}
+	
+	
 }

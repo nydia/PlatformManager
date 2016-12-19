@@ -1,5 +1,7 @@
 package com.lvhq.platform.modules.sys.utils;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,4 +14,11 @@ import org.slf4j.LoggerFactory;
 public class UserUtils {
 
 	protected static Logger logger = LoggerFactory.getLogger(UserUtils.class);
+	
+	/**
+	 * 获取授权主要对象
+	 */
+	public static Subject getSubject() {
+		return SecurityUtils.getSubject();
+	}
 }

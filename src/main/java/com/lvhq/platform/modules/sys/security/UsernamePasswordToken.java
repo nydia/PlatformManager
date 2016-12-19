@@ -4,4 +4,8 @@ public class UsernamePasswordToken extends org.apache.shiro.authc.UsernamePasswo
 
 	private static final long serialVersionUID = 1L;
 
+	public UsernamePasswordToken(String loginName, char[] charArray, Object object) {
+		super(loginName, charArray, null);
+	}
+
 }

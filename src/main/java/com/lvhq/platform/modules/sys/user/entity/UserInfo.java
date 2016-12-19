@@ -1,6 +1,7 @@
 package com.lvhq.platform.modules.sys.user.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -12,11 +13,12 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.google.common.collect.Lists;
 import com.lvhq.platform.common.persistence.DataEntity;
+import com.lvhq.platform.modules.sys.role.entity.Role;
 
 /**
- * 用户Entity
- * sys_user_info和sys_user 主键相同
+ * 用户Entity sys_user_info和sys_user 主键相同
  * 
  * @author lvhq
  */
@@ -140,6 +142,8 @@ public class UserInfo extends DataEntity<UserInfo> {
 	@Length(min = 0, max = 100, message = "微信号长度必须介于 1 和 100 之间")
 	private String weixin;
 
+	private List<Role> roleList = Lists.newArrayList();
+
 	// 临时变量
 
 	public UserInfo() {
@@ -147,7 +151,8 @@ public class UserInfo extends DataEntity<UserInfo> {
 	}
 
 	public UserInfo(Long id) {
-		super(id);
+		super();
+		this.id = id;
 	}
 
 	public String getPhoto() {
@@ -324,4 +329,14 @@ public class UserInfo extends DataEntity<UserInfo> {
 	public void setWeixin(String weixin) {
 		this.weixin = weixin;
 	}
+
+	public List<Role> getRoleList() {
+		return roleList;
+	}
+
+	public void setRoleList(List<Role> roleList) {
+		this.roleList = roleList;
+	}
+	
+	
 }
