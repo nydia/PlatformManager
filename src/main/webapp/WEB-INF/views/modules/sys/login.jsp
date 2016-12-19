@@ -10,6 +10,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="<%=new Date()%>">
+
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="${context }/static/js/materialize/css/materialize.min.css"
+	media="screen,projection" />
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript"
+	src="${context }/static/js/materialize/js/materialize.min.js"></script>
 </head>
 <body>
 	<table>
@@ -19,25 +32,31 @@
 		</tr>
 	</table>
 	<hr />
-	<form action="${ctx }/login" method="post">
-		<table>
-			<tr>
-				<td colspan="2">用户登陆：</td>
-			</tr>
-			<tr>
-				<td>用户名称：</td>
-				<td><input type="text" name="loginName" value="" /></td>
-			</tr>
-			<tr>
-				<td>密码:</td>
-				<td><input type="password" name="password" value="" /></td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td><input type="submit" value="提交" /></td>
-			</tr>
-		</table>
-	</form>
+	<div class="row">
+		<div class="col s4">
+			<form action="${ctx }/login" method="post">
+				<table>
+					<tr>
+						<td colspan="2">用户登陆：</td>
+					</tr>
+					<tr>
+						<td>用户名称：</td>
+						<td><div class="input-field">
+								<input type="text" name="loginName" value="" />
+							</div></td>
+					</tr>
+					<tr>
+						<td>密码:</td>
+						<td><input type="password" name="password" value="" /></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td><input type="submit" value="提交" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
 	<hr />
 	<table>
 		<tr>
