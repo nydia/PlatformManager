@@ -8,8 +8,12 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.lvhq.platform.modules.sys.user.entity.User;
 
-public interface UserDao extends JpaRepository<User, Long>,JpaSpecificationExecutor<User> {
+public interface UserDao extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
 
-	@Query(" select user from User ")
+	@Query(" select u from User u ")
 	List<User> findAll();
+
+	@Query(" select u from User u where u.loginName = ? ")
+	User findByLoginName(String loginName);
+
 }

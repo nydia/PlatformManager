@@ -229,11 +229,13 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>${hibernateVersion}</version>
 		</dependency>
+		<!--  这个包不需要，前面已经有了spring-data-jpa
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.0-api</artifactId>
 			<version>1.0.1.Final</version>
 		</dependency>
+		 -->
 		<dependency>
 			<groupId>org.hibernate.common</groupId>
 			<artifactId>hibernate-commons-annotations</artifactId>

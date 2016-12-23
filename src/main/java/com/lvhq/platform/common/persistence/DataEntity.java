@@ -40,7 +40,7 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
 	protected String delFlag; // 删除标记（0：正常；1：删除；2：审核）
 
 	protected Map<String, Object> inc = new HashMap<String, Object>();
-	
+
 	public String getRemarks() {
 		return remarks;
 	}
@@ -96,6 +96,13 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
 	public void setInc(Map<String, Object> inc) {
 		this.inc = inc;
 	}
-	
-	
+
+	/**
+	 * 插入之前执行方法，子类实现
+	 */
+	@Override
+	public void preInsert() {
+		this.delFlag = DEL_FLAG_NORMAL;
+	}
+
 }

@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.lvhq.platform.modules.sys.security.Principal;
 import com.lvhq.platform.modules.sys.security.UsernamePasswordToken;
 import com.lvhq.platform.modules.sys.user.entity.User;
 import com.lvhq.platform.modules.sys.utils.UserUtils;
@@ -43,8 +44,11 @@ public class LoginController extends BaseController {
 
 	@RequestMapping(value = "${adminPath}/logout", method = { RequestMethod.GET })
 	public String logout() {
+		Principal principal = UserUtils.getPrincipal();
+		if (principal != null) {
+
+		}
 		UserUtils.getSubject().logout();
-		System.out.println("adminPath---" + adminPath);
 		return "redirect:" + adminPath + "/login";
 	}
 

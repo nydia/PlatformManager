@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.lvhq.platform.modules.sys.user.entity.User;
 import com.lvhq.platform.modules.sys.user.service.UserService;
+import com.lvhq.platform.modules.sys.utils.UserUtils;
 
 @Service
 public class ShiroRealm extends AuthorizingRealm {
@@ -45,20 +46,18 @@ public class ShiroRealm extends AuthorizingRealm {
 		// 把token转换成User对象
 		User userLogin = tokenToUser((UsernamePasswordToken) authcToken);
 		// 验证用户是否可以登录
-		User ui = userService.getByLoginName(userLogin.getLoginName());
+		User ui = userService.findByLoginName(userLogin.getLoginName());
 		if (ui == null) {
 			return null; // 异常处理，找不到数据
 		}
 		// 设置session
-		Session session = SecurityUtils.getSubject().getSession();
+		Session session = UserUtils.getSubject().getSession();
 		session.setAttribute(ShiroRealm.SESSION_USER_KEY, ui);
 		// 当前 Realm 的 name
 		String realmName = this.getName();
 		// 登陆的主要信息: 可以是一个实体类的对象, 但该实体类的对象一定是根据 token 的 username 查询得到的.
 		//Principal principal = (Principal) authcToken.getPrincipal();
-		//return new SimpleAuthenticationInfo(principal, userLogin.getPassword(), realmName);
-		
-		return new SimpleAuthenticationInfo(ui.getLoginName(), userLogin.getPassword(), realmName);
+		return new SimpleAuthenticationInfo(new Principal(ui), userLogin.getPassword(), realmName);
 	}
 
 	private User tokenToUser(UsernamePasswordToken authcToken) {

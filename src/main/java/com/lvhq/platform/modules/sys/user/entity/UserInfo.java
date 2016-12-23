@@ -1,9 +1,12 @@
 package com.lvhq.platform.modules.sys.user.entity;
 
 import java.util.Date;
-import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.StringUtils;
@@ -13,9 +16,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.google.common.collect.Lists;
 import com.lvhq.platform.common.persistence.DataEntity;
-import com.lvhq.platform.modules.sys.role.entity.Role;
 
 /**
  * 用户Entity sys_user_info和sys_user 主键相同
@@ -28,6 +29,11 @@ import com.lvhq.platform.modules.sys.role.entity.Role;
 public class UserInfo extends DataEntity<UserInfo> {
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@Column(name="id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	protected Long id;
+	
 	/**
 	 * 工号
 	 */
@@ -142,8 +148,6 @@ public class UserInfo extends DataEntity<UserInfo> {
 	@Length(min = 0, max = 100, message = "微信号长度必须介于 1 和 100 之间")
 	private String weixin;
 
-	private List<Role> roleList = Lists.newArrayList();
-
 	// 临时变量
 
 	public UserInfo() {
@@ -208,14 +212,6 @@ public class UserInfo extends DataEntity<UserInfo> {
 
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
-	}
-
-	public String getRemarks() {
-		return remarks;
-	}
-
-	public Date getCreateDate() {
-		return createDate;
 	}
 
 	public String getSex() {
@@ -330,12 +326,8 @@ public class UserInfo extends DataEntity<UserInfo> {
 		this.weixin = weixin;
 	}
 
-	public List<Role> getRoleList() {
-		return roleList;
-	}
-
-	public void setRoleList(List<Role> roleList) {
-		this.roleList = roleList;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	

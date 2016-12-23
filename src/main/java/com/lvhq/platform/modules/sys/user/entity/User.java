@@ -2,7 +2,11 @@ package com.lvhq.platform.modules.sys.user.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -31,6 +35,11 @@ public class User extends DataEntity<User> {
 
 	public static String DEFAULT_PASSWORD = "123456";
 
+	@Id
+	@Column(name="id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	protected Long id;
+	
 	/**
 	 * 登录名
 	 */
@@ -265,4 +274,10 @@ public class User extends DataEntity<User> {
 	public void setUserType(String userType) {
 		this.userType = userType;
 	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	
 }

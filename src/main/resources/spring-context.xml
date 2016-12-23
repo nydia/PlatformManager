@@ -31,64 +31,64 @@
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
-	<!-- Spring Data Jpa配置 , 扫描base-package下所有继承于Repository<T,ID>的接口 -->
-<!-- 	<jpa:repositories base-package="com.lvhq.platform" -->
-<!-- 		transaction-manager-ref="transactionManager" -->
-<!-- 		entity-manager-factory-ref="entityManagerFactory" /> -->
+	<!-- Spring Data Jpa配置 , 扫`描base-package下所有继承于Repository<T,ID>的接口 -->
+	<jpa:repositories base-package="com.lvhq.platform" transaction-manager-ref="transactionManager" entity-manager-factory-ref="entityManagerFactory" />
 
 	<!-- Jpa Entity Manager 配置 -->
-<!-- 	<bean id="entityManagerFactory" -->
-<!-- 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" -->
-<!-- 		depends-on="dataSource"> -->
-<!-- 		<property name="dataSource" ref="dataSource" /> -->
-<!-- 		<property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter" /> -->
-<!-- 		<property name="packagesToScan" value="com.lvhq.platform" /> -->
-<!-- 		<property name="jpaProperties"> -->
-<!-- 			<props> -->
-<!-- 				<prop key="hibernate.current_session_context_class">thread</prop> -->
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+		depends-on="dataSource">
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter" />
+		<property name="packagesToScan" value="com.lvhq.platform" />
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.current_session_context_class">thread</prop>
 
 				<!-- 抓取策略 -->
-<!-- 				<prop key="hibernate.max_fetch_depth">1</prop> -->
-<!-- 				<prop key="hibernate.default_batch_fetch_size">4</prop> -->
-<!-- 				<prop key="hibernate.jdbc.fetch_size">30</prop> -->
-<!-- 				<prop key="hibernate.jdbc.batch_size">50</prop> -->
+				<prop key="hibernate.max_fetch_depth">1</prop>
+				<prop key="hibernate.default_batch_fetch_size">4</prop>
+				<prop key="hibernate.jdbc.fetch_size">30</prop>
+				<prop key="hibernate.jdbc.batch_size">50</prop>
 
 				<!-- 缓存 -->
-<!-- 				<prop key="hibernate.cache.use_second_level_cache">true</prop> -->
-<!-- 				<prop key="hibernate.cache.use_query_cache">true</prop> -->
-<!-- 				<prop key="hibernate.cache.provider_class">net.sf.ehcache.hibernate.EhCacheProvider</prop> -->
-<!-- 				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory -->
-<!-- 				</prop> -->
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.cache.provider_class">net.sf.ehcache.hibernate.EhCacheProvider</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory
+				</prop>
 				<!-- <prop key="net.sf.ehcache.configurationResourceName">conf/ehcache/ehcache-hibernate-local.xml</prop> -->
 
 				<!-- 建表的命名规则 -->
-<!-- 				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop> -->
+				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
 
-<!-- 				<prop key="hibernate.hbm2ddl.auto">update</prop> -->
-<!-- 				<prop key="hibernate.generate_statistics">true</prop> -->
-<!-- 				<prop key="hibernate.use_sql_comments">true</prop> -->
-<!-- 				<prop key="hibernate.show_sql">true</prop> -->
-<!-- 				<prop key="hibernate.format_sql">true</prop> -->
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+				<prop key="hibernate.use_sql_comments">true</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
 				<!-- end 用于调试的属性 -->
-<!-- 			</props> -->
-<!-- 		</property> -->
-<!-- 	</bean> -->
+			</props>
+		</property>
+	</bean>
 
-<!-- 	<bean id="hibernateJpaVendorAdapter" -->
-<!-- 		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"> -->
-<!-- 		<property name="databasePlatform" value="${hibernate.dialect}" /> -->
-<!-- 	</bean> -->
+	<bean id="hibernateJpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="databasePlatform" value="${hibernate.dialect}" />
+	</bean>
 
 	<!-- 事务管理器配置, Jpa单数据源事务 -->
-<!-- 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"> -->
-<!-- 		<property name="entityManagerFactory" ref="entityManagerFactory" /> -->
-<!-- 	</bean> -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
 
-	<!-- 定义事务 -->
+	<!-- 定义事务  一般事物 ,如果没有整合spring-jpa-data就可以用这个事物配置-->
+	<!-- 
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	 -->
 	
 	<bean id="validator"
 		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />

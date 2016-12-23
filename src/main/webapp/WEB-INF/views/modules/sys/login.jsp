@@ -53,7 +53,7 @@
 						<td>&nbsp;</td>
 						<td><input type="submit" value="提交" /></td>
 					</tr>
-				</table>
+				</table> 
 			</form>
 		</div>
 	</div>
