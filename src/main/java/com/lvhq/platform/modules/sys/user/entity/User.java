@@ -8,11 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -36,48 +37,58 @@ public class User extends DataEntity<User> {
 	public static String DEFAULT_PASSWORD = "123456";
 
 	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
-	
+
 	/**
 	 * 登录名
 	 */
+	@NotBlank
+	@Length(max = 100)
+	@Column(name = "login_name", length = 100, nullable = false)
 	private String loginName;
 
 	/**
 	 * 姓名
 	 */
+	@NotBlank
 	@Length(min = 1, max = 100, message = "姓名长度必须介于 1 和 100 之间")
-	@NotNull(message = "姓名不能为空")
+	@Column(length = 100, nullable = false)
 	private String name;
 
 	/**
 	 * 密码
 	 */
 	@JsonIgnore
+	@NotBlank
 	@Length(min = 1, max = 100, message = "密码长度必须介于 1 和 100 之间")
+	@Column(name = "password", length = 100, nullable = false)
 	private String password;
 
 	/**
 	 * 最后登录IP
 	 */
+	@Column(name="login_ip", length = 255)
 	private String loginIp;
 
 	/**
 	 * 最后登录日期
 	 */
 	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+	@Column(name = "login_date")
 	private Date loginDate;
 
 	/**
 	 * 是否允许登陆，1=是，2=否
 	 */
+	@Column(name = "login_flag")
 	private String loginFlag;
 
 	/**
 	 * 累计登录次数
 	 */
+	@Column(name = "login_times")
 	private Integer loginTimes;
 
 	/**
@@ -90,23 +101,33 @@ public class User extends DataEntity<User> {
 	 * 用户类型 1-总部用户，2-中心用户，3幼儿园用户
 	 */
 	@Length(min = 1, max = 64, message = "盐值长度必须介于 0 和 1 之间")
+	@Column(name = "user_type")
 	private String userType;
 
-	private UserInfo userInfo = new UserInfo();
+//	@OneToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "user_id")
+//	private UserInfo userInfo = new UserInfo();
 
 	// 临时变量
+	@Transient
 	@JsonBackReference
 	private String plainPassword;// 原密码
+	@Transient 
 	@JsonBackReference
 	private String oldLoginName;// 原登录名
+	@Transient
 	@JsonBackReference
 	private String newPassword;// 新密码
+	@Transient 
 	@JsonBackReference
 	private String oldLoginIp;// 上次登陆IP
+	@Transient 
 	@JsonBackReference
 	private Date oldLoginDate;// 上次登陆日期
+	@Transient 
 	@JsonBackReference
 	private boolean superAdmin; // 是否是超级管理员
+	@Transient 
 	@JsonBackReference
 	private String rePassword;// 二次输入密码
 
@@ -122,11 +143,6 @@ public class User extends DataEntity<User> {
 	public User(Long id, String loginName) {
 		super();
 		this.loginName = loginName;
-	}
-
-	public User(UserInfo userInfo) {
-		super();
-		this.userInfo = userInfo;
 	}
 
 	public String getLoginFlag() {
@@ -227,14 +243,6 @@ public class User extends DataEntity<User> {
 		this.loginTimes = loginTimes;
 	}
 
-	public UserInfo getUserInfo() {
-		return userInfo;
-	}
-
-	public void setUserInfo(UserInfo userInfo) {
-		this.userInfo = userInfo;
-	}
-
 	public boolean isSuperAdmin() {
 		return superAdmin;
 	}
@@ -278,6 +286,5 @@ public class User extends DataEntity<User> {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	
+
 }

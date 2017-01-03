@@ -21,6 +21,7 @@
 				<!-- ${adminPath}/logout = logout -->
 				${adminPath}/logout = anon
 				${adminPath}/** = user
+				${adminPath}/sys/user/initData = anon
 			</value>
 		</constructor-arg>
 	</bean>

@@ -4,6 +4,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.persistence.Column;
+import javax.persistence.Transient;
+
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -23,20 +26,25 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
 	@Length(min = 0, max = 5000)
 	protected String remarks; // 备注
 
+	@Transient
 	@JsonIgnore
 	protected User createBy; // 创建者
 
 	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+	@Column(name = "create_date")
 	protected Date createDate; // 创建日期
 
+	@Transient
 	@JsonIgnore
 	protected User updateBy; // 更新者
 
 	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+	@Column(name = "update_date")
 	protected Date updateDate; // 更新日期
 
 	@JsonIgnore
 	@Length(min = 1, max = 1)
+	@Column(name = "del_flag", length = 1, nullable = false)
 	protected String delFlag; // 删除标记（0：正常；1：删除；2：审核）
 
 	protected Map<String, Object> inc = new HashMap<String, Object>();

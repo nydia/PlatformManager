@@ -23,7 +23,7 @@ public class SystemService extends BaseService implements InitializingBean {
 		StringBuilder sb = new StringBuilder();
 		sb.append("\r\n======================================================================\r\n");
 		sb.append("\r\n                   ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆     \r\n");
-		sb.append("\r\n    欢迎使用 " + Global.getConfig("productName") + "  - Powered By http://127.0.0.1:8080/platformMgr\r\n");
+		sb.append("\r\n    欢迎使用 " + Global.getConfig("productName") + "  - Powered By http://127.0.0.1:8080/PlatformManater\r\n");
 		sb.append("\r\n                   ☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★     \r\n");
 		sb.append("\r\n======================================================================\r\n");
 		System.out.println(sb.toString());

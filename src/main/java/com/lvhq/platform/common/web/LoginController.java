@@ -1,17 +1,22 @@
 package com.lvhq.platform.common.web;
 
+import java.util.List;
+
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.google.common.collect.Lists;
 import com.lvhq.platform.modules.sys.security.Principal;
 import com.lvhq.platform.modules.sys.security.UsernamePasswordToken;
 import com.lvhq.platform.modules.sys.user.entity.User;
+import com.lvhq.platform.modules.sys.user.service.UserService;
 import com.lvhq.platform.modules.sys.utils.UserUtils;
 
 /**
@@ -25,8 +30,12 @@ public class LoginController extends BaseController {
 
 	private static String LOGIN = "modules/sys/login";
 
+	@Autowired
+	private UserService userService;
+
 	@RequestMapping(value = "${adminPath}/login", method = { RequestMethod.GET })
 	public String login(User user, Model model) {
+		//this.initUserData();
 		return LOGIN;
 	}
 
@@ -89,5 +98,19 @@ public class LoginController extends BaseController {
 			return true; // 参数未改变，无需重新登录，默认为已经登录成功
 		}
 		return false; // 需要重新登陆
+	}
+
+	@SuppressWarnings("unused")
+	private void initUserData() {
+		List<User> userList = Lists.newArrayList();
+		User user_admin = new User();
+		user_admin.setLoginName("admin");
+		user_admin.setPassword(User.DEFAULT_PASSWORD);
+		user_admin.setName("admin管理员");
+		userList.add(user_admin);
+
+		for (User e : userList) {
+			userService.insert(e);
+		}
 	}
 }

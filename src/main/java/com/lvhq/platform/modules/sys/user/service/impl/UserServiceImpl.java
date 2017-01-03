@@ -29,11 +29,18 @@ public class UserServiceImpl implements UserService {
 		User user = null;
 		if (StringUtils.isNotBlank(loginName)) {
 			user = userDao.findByLoginName(loginName);
+
+			//查询结果取其一
+			// List<User> userList = userDao.findAll();
+			// if (userList != null && userList.size() > 0) {
+			// user = userList.get(0);
+			// }
 		}
 		return user;
 	}
 
 	@Override
+	@Transactional(readOnly = false)
 	public void insert(User user) {
 		userDao.save(user);
 	}

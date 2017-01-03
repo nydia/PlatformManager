@@ -53,7 +53,7 @@
 						<td>&nbsp;</td>
 						<td><input type="submit" value="提交" /></td>
 					</tr>
-				</table> 
+				</table>
 			</form>
 		</div>
 	</div>
@@ -61,6 +61,11 @@
 	<table>
 		<tr>
 			<td colspan="2"><a href="${ctx }/logout">退出登陆</a></td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<td colspan="2"><a href="${ctx }/sys/user/initData">初始化用户数据</a></td>
 		</tr>
 	</table>
 </body>
