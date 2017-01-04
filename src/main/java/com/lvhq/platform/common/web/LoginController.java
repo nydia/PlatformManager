@@ -2,6 +2,9 @@ package com.lvhq.platform.common.web;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -28,7 +31,8 @@ import com.lvhq.platform.modules.sys.utils.UserUtils;
 @Controller
 public class LoginController extends BaseController {
 
-	private static String LOGIN = "modules/sys/login";
+	private static String LOGIN = "modules/sys/login2";
+	private static String MAIN = "common/main";
 
 	@Autowired
 	private UserService userService;
@@ -44,11 +48,20 @@ public class LoginController extends BaseController {
 		String msg = loginUser(user);
 		if (!"success".equals(msg)) {
 			model.addAttribute("msg", "用户不存在或密码错误！");
+			return LOGIN;
 		} else {
 			model.addAttribute("msg", "登陆成功！");// 返回到页面说夹带的参数
 			model.addAttribute("name", user.getLoginName());
+			return MAIN;
 		}
-		return LOGIN;
+	}
+	
+	/**
+	 * 登录成功，进入管理首页
+	 */
+	@RequestMapping(value = "${adminPath}")
+	public String index(HttpServletRequest request, HttpServletResponse response) {
+		return MAIN;
 	}
 
 	@RequestMapping(value = "${adminPath}/logout", method = { RequestMethod.GET })

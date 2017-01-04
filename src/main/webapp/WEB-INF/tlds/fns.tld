@@ -12,6 +12,14 @@
   <uri>http://java.sun.com/jsp/jstl/functionss</uri>
 
   <function>
+    <description>获取配置</description>
+    <name>getConfig</name>
+    <function-class>com.lvhq.platform.common.config.Global</function-class>
+    <function-signature>java.lang.String getConfig(java.lang.String)</function-signature>
+    <example>${fns:getConfig(key)}</example>
+  </function>
+  
+  <function>
     <description>获取管理路径</description>
     <name>getAdminPath</name>
     <function-class>com.lvhq.platform.common.config.Global</function-class>

@@ -18,11 +18,11 @@ public interface UserDao extends JpaRepository<User, Long>, JpaSpecificationExec
 	// User findByLoginName(@Param("loginName") String loginName);
 
 	// 2.第二种查询方法
-	// @Query(" select u from User u where u.loginName = ?1 ")
-	// User findByLoginName(String loginName);
+	 @Query(" select u from User u where u.loginName = ?1 ")
+	 User findByLoginName(String loginName);
 
 	// 3.第三种查询方法
-	@Query(" select u from User u where u.loginName = ? ")
-	User findByLoginName(String loginName);
+	//@Query(" select u from User u where u.loginName = ? ")
+	//User findByLoginName(String loginName);
 
 }

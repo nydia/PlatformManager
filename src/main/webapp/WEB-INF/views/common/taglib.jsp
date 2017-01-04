@@ -6,3 +6,4 @@
 <%@ taglib prefix="fns" uri="/WEB-INF/tlds/fns.tld" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}${fns:getAdminPath()}"/>
 <c:set var="context" value="${pageContext.request.contextPath}"></c:set>
+<c:set var="ctxStatic" value="${fns:getConfig('cdnStatic')}"></c:set>

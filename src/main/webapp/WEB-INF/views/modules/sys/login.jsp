@@ -12,17 +12,16 @@
 <meta http-equiv="expires" content="<%=new Date()%>">
 
 <!--Import materialize.css-->
-<link type="text/css" rel="stylesheet"
-	href="${context }/static/js/materialize/css/materialize.min.css"
-	media="screen,projection" />
+<!-- <link type="text/css" rel="stylesheet" -->
+<%-- 	href="${ctxStatic }/js/materialize/css/materialize.min.css" --%>
+<!-- 	media="screen,projection" /> -->
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript"
-	src="${context }/static/js/materialize/js/materialize.min.js"></script>
+<%-- <script type="text/javascript" src="${ctxStatic }/js/materialize/js/materialize.min.js"></script> --%>
 </head>
 <body>
 	<table>

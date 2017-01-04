@@ -75,19 +75,6 @@ public class Global {
 		return value;
 	}
 
-	public static String getSatisfyPath() {
-		return getConfig("stisfyPath");
-	}
-
-	/**
-	 * 当前部署的应用是公版定制版，公版：satisfy，定制版：对应的BrandCode
-	 * 
-	 * @return
-	 */
-	public static String getBrandCode() {
-		return getConfig("brandCode");
-	}
-
 	/**
 	 * 获取管理端根路径
 	 */
