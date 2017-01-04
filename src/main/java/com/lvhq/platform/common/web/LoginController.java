@@ -32,7 +32,7 @@ import com.lvhq.platform.modules.sys.utils.UserUtils;
 public class LoginController extends BaseController {
 
 	private static String LOGIN = "modules/sys/login2";
-	private static String MAIN = "common/main";
+	private static String INDEX = "index";
 
 	@Autowired
 	private UserService userService;
@@ -52,7 +52,7 @@ public class LoginController extends BaseController {
 		} else {
 			model.addAttribute("msg", "登陆成功！");// 返回到页面说夹带的参数
 			model.addAttribute("name", user.getLoginName());
-			return MAIN;
+			return INDEX;
 		}
 	}
 	
@@ -61,7 +61,7 @@ public class LoginController extends BaseController {
 	 */
 	@RequestMapping(value = "${adminPath}")
 	public String index(HttpServletRequest request, HttpServletResponse response) {
-		return MAIN;
+		return INDEX;
 	}
 
 	@RequestMapping(value = "${adminPath}/logout", method = { RequestMethod.GET })
