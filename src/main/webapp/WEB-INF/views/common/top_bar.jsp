@@ -9,7 +9,7 @@
     <nav id="topbar" role="navigation" style="margin-bottom: 0; z-index: 2;" class="navbar navbar-default navbar-static-top">
         <div class="navbar-header">
             <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-            </button><a id="logo" href="index.html" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text"><img src="${ctxStatic}/images/platform/left_small_logo.png"/></span><span style="display: none" class="logo-text-icon"><img src="${ctxStatic}/images/platform/left_big_logo.png"/></span></a>
+            </button><a id="logo" href="index.html" class="navbar-brand"><span class="fa fa-rocket"></span><span class="logo-text"><img src="${ctxStatic}/images/platform/left_big_logo.png"/></span><span style="display: none" class="logo-text-icon"><img src="${ctxStatic}/images/platform/left_small_logo.png" style="width: 20px; height: 20px;"/></span></a>
         </div>
         <div class="topbar-main"><a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a>
             <ul class="nav navbar-nav    ">

@@ -32,7 +32,7 @@
                 
                 <!--BEGIN CONTENT-->
                 <div class="page-content">
-                  	<%@ include file="/WEB-INF/views/common/context.jsp"%>
+                  	<%@ include file="/WEB-INF/views/common/content/content.jsp"%>
     			</div>
     			<!--END CONTENT-->
     		</div>

@@ -7,7 +7,10 @@ import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.lvhq.platform.common.utils.SpringContextHolder;
 import com.lvhq.platform.modules.sys.security.Principal;
+import com.lvhq.platform.modules.sys.user.dao.UserDao;
+import com.lvhq.platform.modules.sys.user.entity.User;
 
 /**
  * 用户工具类
@@ -18,6 +21,8 @@ import com.lvhq.platform.modules.sys.security.Principal;
 public class UserUtils {
 
 	protected static Logger logger = LoggerFactory.getLogger(UserUtils.class);
+	
+	private static UserDao userDao = SpringContextHolder.getBean(UserDao.class);
 
 	/**
 	 * 获取授权主要对象
@@ -42,5 +47,23 @@ public class UserUtils {
 			logger.error(e.getMessage(), e);
 		}
 		return null;
+	}
+	
+	/**
+	 * 获取当前用户
+	 * 
+	 * @return 取不到返回 new User()
+	 */
+	public static User getUser() {
+		Principal principal = getPrincipal();
+		if (principal != null) {
+			User user = userDao.getOne(principal.getId());
+			if (user != null) {
+				return user;
+			}
+			return new User();
+		}
+		// 如果没有登录，则返回实例化空的User对象。
+		return new User();
 	}
 }

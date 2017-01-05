@@ -27,4 +27,20 @@
     <example>${fns:getAdminPath()}</example>
   </function>
   
+  <!-- UserUtils -->
+  <function>
+    <description>获取当前用户对象</description>
+    <name>getUser</name>
+    <function-class>com.lvhq.platform.modules.sys.utils.UserUtils</function-class>
+    <function-signature>com.lvhq.platform.modules.sys.user.entity.User getUser()</function-signature>
+    <example>${fns:getUser()}</example>  
+  </function>
+  <function>
+    <description>获取授权用户信息</description>
+    <name>getPrincipal</name>
+    <function-class>com.lvhq.platform.modules.sys.utils.UserUtils</function-class>
+    <function-signature>com.lvhq.platform.modules.sys.security.Principal getPrincipal()</function-signature>
+    <example>${fns:getPrincipal()}</example>  
+  </function>
+  
 </taglib>

@@ -8,7 +8,7 @@
                 <div class="thumb"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg" alt="" class="img-circle" />
                 </div>
                 <div class="info">
-                    <p>John Doe</p>
+                    <p>${fns:getPrincipal().name}</p>
                     <ul class="list-inline list-unstyled">
                         <li><a href="extra-profile.html" data-hover="tooltip" title="Profile"><i class="fa fa-user"></i></a>
                         </li>
@@ -22,7 +22,13 @@
                 </div>
                 <div class="clearfix"></div>
             </li>
-            <li class="active"><a href="index.html"><i class="fa fa-tachometer fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Dashboard</span></a>
+            <li class="active"><a href="#"><i class="fa fa-laptop fa-fw"><div class="icon-bg bg-pink"></div></i><span class="menu-title">系统管理</span><span class="fa arrow"></span><span class="label label-yellow">v1.0</span></a>
+                <ul class="nav nav-second-level">
+                    <li class="active"><a href="frontend-one-page.html"><i class="fa fa-rocket"></i><span class="submenu-title">用户管理</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="index.html"><i class="fa fa-tachometer fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Dashboard</span></a>
             </li>
             <li><a href="http://madmin.swlabs.co/" target="_blank"><i class="fa fa-bullhorn fa-fw"><div class="icon-bg bg-orange"></div></i><span class="menu-title">Angular JS Version</span><span class="label label-violet">v4.0</span></a>
             </li>
