@@ -27,11 +27,11 @@
             <!--BEGIN PAGE WRAPPER-->
             <div id="page-wrapper">
                 <!--BEGIN TITLE & BREADCRUMB PAGE-->
-                 <%@ include file="/WEB-INF/views/common/menu_bar.jsp"%>
+                <%@ include file="/WEB-INF/views/common/menu_bar.jsp"%>
                 <!--END TITLE & BREADCRUMB PAGE-->
                 
                 <!--BEGIN CONTENT-->
-                <div class="page-content">
+                <div class="page-content" id="page-main">
                   	<%@ include file="/WEB-INF/views/common/content/content.jsp"%>
     			</div>
     			<!--END CONTENT-->

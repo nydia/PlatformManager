@@ -24,7 +24,7 @@
             </li>
             <li class="active"><a href="#"><i class="fa fa-laptop fa-fw"><div class="icon-bg bg-pink"></div></i><span class="menu-title">系统管理</span><span class="fa arrow"></span><span class="label label-yellow">v1.0</span></a>
                 <ul class="nav nav-second-level">
-                    <li class="active"><a href="frontend-one-page.html"><i class="fa fa-rocket"></i><span class="submenu-title">用户管理</span></a>
+                    <li class="active"><a href="javascript:void(0);" onclick="load_main_page'${ctx}/sys/user/pre/list');"><i class="fa fa-rocket"></i><span class="submenu-title">用户管理</span></a>
                     </li>
                 </ul>
             </li>

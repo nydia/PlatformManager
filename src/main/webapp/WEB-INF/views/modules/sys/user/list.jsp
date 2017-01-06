@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
+<%@ include file="/WEB-INF/views/common/taglib.jsp"%>
 <%@ page import="java.util.Date"%>
 <!DOCTYPE html>
 <html lang="zh">
@@ -11,4 +12,5 @@
 <meta http-equiv="expires" content="<%=new Date()%>">
 </head>
 <body>用户列表：
+
 </body>

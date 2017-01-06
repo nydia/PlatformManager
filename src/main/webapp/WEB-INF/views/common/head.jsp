@@ -38,6 +38,10 @@
     <link type="text/css" rel="stylesheet" href="${ctxStatic }/css/themes/style1/orange-blue.css" class="default-style">
     <link type="text/css" rel="stylesheet" href="${ctxStatic }/css/themes/style1/orange-blue.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="${ctxStatic }/css/style-responsive.css">
+    
+    <script src="${ctxStatic }/js/jquery-1.10.2.min.js"></script>
+	<script src="${ctxStatic }/js/jquery-migrate-1.2.1.min.js"></script>
+	<script src="${ctxStatic }/js/jquery-ui.js"></script>
     <script type="text/javascript">
 	//设置全局变量
 	var ctx = '${ctx}', ctxStatic='${ctxStatic}', js_context='${ctxStatic}';
