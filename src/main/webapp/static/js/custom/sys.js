@@ -3,10 +3,13 @@
  * 
  * @param $
  */
-(function(){
-	function load_main_page(url) {
+(function() {
+	var lhq = {};
+	lhq.load_main_page = function(url) {
 		$("#page-main").load(url, function(response, status, xhr) {
 			// TODO
 		});
-	}
+	};
+	
+	window.lhq = lhq;
 })();

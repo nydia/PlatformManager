@@ -13,7 +13,7 @@
     <!--Loading bootstrap css-->
     <link type="text/css" href="http://fonts.useso.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800">
     <link type="text/css" rel="stylesheet" href="http://fonts.useso.com/css?family=Oswald:400,700,300">
-    <link type="text/css" rel="stylesheet" href="${ctxStatic }/vendors/jquery-ui-1.10.3.custom/css/ui-lightness/jquery-ui-1.10.3.custom.css">
+	<%-- link type="text/css" rel="stylesheet" href="${ctxStatic }/vendors/jquery-ui-1.10.3.custom/css/ui-lightness/jquery-ui-1.10.3.custom.css"> --%>
     <link type="text/css" rel="stylesheet" href="${ctxStatic }/vendors/font-awesome/css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="${ctxStatic }/vendors/bootstrap/css/bootstrap.min.css">
     <!--Loading style vendors-->
